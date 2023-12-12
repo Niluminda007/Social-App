@@ -14,7 +14,6 @@ public class TestDataUtil {
 
     public static UserEntity generateUserEntity() {
         return UserEntity.builder()
-                .userId(1L)
                 .profile(generateProfileEntity())
                 .firstName("Ushan")
                 .lastName("Jayawardana")
@@ -28,7 +27,6 @@ public class TestDataUtil {
 
     public static ProfileEntity generateProfileEntity() {
         return ProfileEntity.builder()
-                .profileId(1L)
                 .userName("ushan123")
                 .name("Ushan Niluminda")
                 .email("ushan@gmail.com")
@@ -37,14 +35,12 @@ public class TestDataUtil {
     }
     public static ImageEntity generateProfileImage(){
         return ImageEntity.builder()
-                .imageId(1L)
                 .lowQImageUrl("https://example.com/lowQImage.jpg")
                 .highQImageUrl("https://example.com/highQImage.jpg")
                 .build();
     }
     public static ImageEntity generateBackgroundImage() {
         return ImageEntity.builder()
-                .imageId(2L)
                 .lowQImageUrl("https://example.com/lowQBackgroundImage.jpg")
                 .highQImageUrl("https://example.com/highQBackgroundImage.jpg")
                 .build();
