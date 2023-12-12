@@ -22,7 +22,6 @@ public class UserController {
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto user) {
         UserEntity userEntity = userMapper.mapFrom(user);
         UserEntity savedUserEntity = userService.createUser(userEntity);
-        System.out.println(userEntity);
         return new ResponseEntity<>(userMapper.mapTo(savedUserEntity), HttpStatus.CREATED);
 
     }
