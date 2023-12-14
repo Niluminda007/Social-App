@@ -6,6 +6,7 @@ import com.ushan.SocialMedia.mappers.Mapper;
 import com.ushan.SocialMedia.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,5 +25,9 @@ public class UserController {
         UserEntity savedUserEntity = userService.createUser(userEntity);
         return new ResponseEntity<>(userMapper.mapTo(savedUserEntity), HttpStatus.CREATED);
 
+    }
+    @GetMapping(path = "/hello")
+    public ResponseEntity<String> sayHello(){
+        return new ResponseEntity<>("Hello from secured end point", HttpStatus.OK);
     }
 }
