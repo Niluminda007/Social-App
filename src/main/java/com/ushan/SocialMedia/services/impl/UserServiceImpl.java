@@ -3,7 +3,9 @@ package com.ushan.SocialMedia.services.impl;
 import com.ushan.SocialMedia.domains.entities.UserEntity;
 import com.ushan.SocialMedia.repositories.UserRepository;
 import com.ushan.SocialMedia.services.UserService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -17,5 +19,10 @@ public class UserServiceImpl implements UserService {
     public UserEntity createUser(UserEntity userEntity) {
         return userRepository.save(userEntity);
 
+    }
+
+    @Override
+    public UserEntity getUserByUserName(String userName) {
+        return userRepository.findByUserName(userName).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }
