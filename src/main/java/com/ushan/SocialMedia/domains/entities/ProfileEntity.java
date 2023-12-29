@@ -18,6 +18,10 @@ public class ProfileEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profiles_id_sequence")
     private Long profileId;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
     @Column(nullable = false)
     private String name;
 
