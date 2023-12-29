@@ -13,13 +13,14 @@ import java.time.LocalDate;
 @Builder
 public class UserDto {
     private Long userId;
-    private ProfileDto profile;
     private String firstName;
     private String lastName;
     private String bio;
+    private String username;
     private String password;
     private String address;
     private LocalDate dateOfBirth;
     private Gender gender;
+    private ProfileDto profile;
 
 }

@@ -18,6 +18,7 @@ public class ProfileEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profiles_id_sequence")
     private Long profileId;
 
+
     @Column(nullable = false)
     private String name;
 

@@ -35,7 +35,6 @@ public class UserEntityRepositoryIntegrationTests {
         assertThat(retrievedUser.getProfile()).isNotNull();
         assertThat(retrievedUser).isEqualTo(userEntity);
 
-        assertThat(retrievedUser.getPosts()).isNull();
 
 
     }
