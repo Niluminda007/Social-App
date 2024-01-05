@@ -2,9 +2,7 @@ package com.ushan.SocialMedia.repositories;
 
 import com.ushan.SocialMedia.TestDataUtil;
 import com.ushan.SocialMedia.domains.entities.UserEntity;
-import jakarta.persistence.Table;
 import jakarta.transaction.Transactional;
-import org.hibernate.Hibernate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -5,47 +5,30 @@ import com.ushan.SocialMedia.domains.entities.UserEntity;
 import com.ushan.SocialMedia.domains.reponses.AuthenticationRequest;
 import com.ushan.SocialMedia.domains.reponses.AuthenticationResponse;
 import com.ushan.SocialMedia.domains.reponses.RegisterRequest;
-import com.ushan.SocialMedia.enums.UserRole;
 import com.ushan.SocialMedia.mappers.Mapper;
-import com.ushan.SocialMedia.repositories.UserRepository;
 import com.ushan.SocialMedia.services.AuthenticationService;
 import com.ushan.SocialMedia.services.JwtService;
+import com.ushan.SocialMedia.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    private final Mapper<UserEntity,UserDto> userMapper;
+    private final UserService userService;
+    private final Mapper<UserEntity, UserDto> userMapper;
+
 
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
-//        UserEntity user = UserEntity.builder()
-//                .firstName(request.getFirstName())
-//                .lastName(request.getLastName())
-//                .bio(request.getBio())
-//                .address(request.getAddress())
-//                .dateOfBirth(request.getDateOfBirth())
-//                .username(request.getUsername())
-//                .password(passwordEncoder.encode(request.getPassword()))
-//                .userRole(UserRole.USER)
-//                .build();
-//        UserEntity savedUser = userRepository.save(user);
 
-//
-        UserDto user = request.getUser();
-        UserEntity userEntity = userMapper.mapFrom(user);
-        userEntity.setPassword(passwordEncoder.encode(request.getUser().getPassword()));
-        userEntity.setUserRole(UserRole.USER);
-        UserEntity savedUser = userRepository.save(userEntity);
-        String jwtToken = jwtService.generateToken(savedUser);
+        UserEntity user = userService.createUser(userMapper.mapFrom(request.getUser()));
+        String jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
@@ -60,7 +43,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                        request.getPassword()
                )
        );
-       UserEntity user = userRepository.findByUsername(request.getUserName()).orElseThrow();
+       UserEntity user = userService.findByUsername(request.getUserName()).orElseThrow();
        String jwtToken = jwtService.generateToken(user);
        return AuthenticationResponse.builder()
                 .token(jwtToken)
