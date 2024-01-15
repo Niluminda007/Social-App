@@ -1,7 +1,6 @@
 package com.ushan.SocialMedia.domains.dtos;
 
-import com.ushan.SocialMedia.domains.entities.*;
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,13 +17,17 @@ import java.util.Set;
 public class PostDto {
 
     private Long postId;
-
     private String content;
-
-
     private List<ImageDto> images;
-
     private String location;
-
+    private Set<TagDto> tags;
     private LocalDate creationDate;
+    private UserDto user;
+    private Set<LikeDto> likes;
+    private List<CommentDto> comments;
+    private Long pageId;
+    private Long groupId;
+    private List<ReportDto> reports;
+
+
 }

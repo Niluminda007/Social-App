@@ -32,7 +32,6 @@ public class UserControllerIntegrationTest {
     private final MockMvc mockMvc;
     @Autowired
     private final ObjectMapper objectMapper;
-    private final PasswordEncoder passwordEncoder;
     private final UserService userService;
 
 
@@ -41,7 +40,6 @@ public class UserControllerIntegrationTest {
         this.mockMvc = mockMvc;
         this.objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
-        this.passwordEncoder = passwordEncoder;
         this.userService = userService;
 
     }
@@ -50,7 +48,6 @@ public class UserControllerIntegrationTest {
     public void testThatRegistersAUserSuccessfullyAndReturnsHttp200() throws Exception {
         UserEntity userEntity = TestDataUtil.generateUserEntity();
         userEntity.setUserId(null);
-        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
 
         Map<String, Object> userJsonMap = new HashMap<>();
         userJsonMap.put("user", userEntity);
@@ -70,7 +67,6 @@ public class UserControllerIntegrationTest {
     public void testThatAuthenticateUserSuccessfullyAndReturnsHttp200WithJwt() throws Exception{
         UserEntity userEntity = TestDataUtil.generateUserEntity();
         userEntity.setUserId(null);
-        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         userService.createUser(userEntity);
 
         String loginCredentials = objectMapper.writeValueAsString(TestDataUtil.generateLoginCredentials());

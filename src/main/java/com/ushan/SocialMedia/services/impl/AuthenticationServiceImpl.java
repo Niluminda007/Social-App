@@ -39,11 +39,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
        authenticationManager.authenticate(
                new UsernamePasswordAuthenticationToken(
-                       request.getUserName(),
+                       request.getUsername(),
                        request.getPassword()
                )
        );
-       UserEntity user = userService.findByUsername(request.getUserName()).orElseThrow();
+       UserEntity user = userService.findByUsername(request.getUsername()).orElseThrow();
        String jwtToken = jwtService.generateToken(user);
        return AuthenticationResponse.builder()
                 .token(jwtToken)

@@ -53,7 +53,7 @@ public class TestDataUtil {
     }
     public static AuthenticationRequest generateLoginCredentials() {
         return AuthenticationRequest.builder()
-                .userName("ushan123")
+                .username("ushan123")
                 .password("12345")
                 .build();
     }
