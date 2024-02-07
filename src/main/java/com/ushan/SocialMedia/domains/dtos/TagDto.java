@@ -1,9 +1,5 @@
 package com.ushan.SocialMedia.domains.dtos;
 
-import com.ushan.SocialMedia.domains.entities.PostEntity;
-import com.ushan.SocialMedia.domains.entities.UserEntity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

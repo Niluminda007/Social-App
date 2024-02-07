@@ -29,8 +29,8 @@ public class PageEntity {
 
     private String about;
 
-    @OneToMany(mappedBy = "page", cascade = CascadeType.ALL)
-    private List<PostEntity> posts;
+//    @OneToMany(mappedBy = "page", cascade = CascadeType.ALL)
+//    private List<PagePostEntity> posts;
 
     @OneToMany(mappedBy = "page", cascade = CascadeType.ALL)
     private List<LikeEntity> likes;

@@ -7,15 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
-
+import java.util.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PostDto {
-
+public class UserPostDTO {
     private Long postId;
     private String content;
     private List<ImageDto> images;

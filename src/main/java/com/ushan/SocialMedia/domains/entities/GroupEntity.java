@@ -32,8 +32,8 @@ public class GroupEntity {
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<GroupMemberEntity> members;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<PostEntity> groupPosts;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<GroupPostEntity> groupPosts;
 
     private String description;
 

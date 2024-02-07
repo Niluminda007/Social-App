@@ -34,7 +34,7 @@ public class UserEntity implements UserDetails {
     private String lastName;
     private String bio;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_id")
     private ProfileEntity profile;
 

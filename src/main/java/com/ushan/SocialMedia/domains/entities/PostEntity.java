@@ -28,16 +28,16 @@ public class PostEntity {
     @JoinColumn(name = "post_id")
     private List<ImageEntity> images;
 
-    private String location;
-
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval= true)
-    private Set<TagEntity> tags;
-
-    private LocalDate creationDate;
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
+    private String location;
+
+//    @OneToMany(mappedBy = "post",  cascade = CascadeType.PERSIST, orphanRemoval= true)
+//    private Set<TagEntity> tags;
+
+    private LocalDate creationDate;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL , orphanRemoval = true)
     private Set<LikeEntity> likes;
@@ -45,15 +45,7 @@ public class PostEntity {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL , orphanRemoval = true)
     private List<CommentEntity> comments;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "page_id")
-    private PageEntity page;
-
-    @ManyToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "group_id")
-    private GroupEntity group;
-
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<ReportEntity> reports;
 
 

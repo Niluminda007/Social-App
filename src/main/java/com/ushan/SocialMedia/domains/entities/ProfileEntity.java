@@ -25,11 +25,11 @@ public class ProfileEntity {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id_profile")
     private ImageEntity profilePicture;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id_background")
     private ImageEntity backgroundPicture;
 }

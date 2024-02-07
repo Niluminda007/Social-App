@@ -1,6 +1,5 @@
 package com.ushan.SocialMedia.services;
 
-import com.ushan.SocialMedia.domains.dtos.UserDto;
 import com.ushan.SocialMedia.domains.entities.UserEntity;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
